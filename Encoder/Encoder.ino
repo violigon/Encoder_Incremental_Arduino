@@ -17,11 +17,19 @@ int valormapeado = 0;
 int ultimoMSB = 0;
 int ultimoLSB = 0;
 
+const int botaoIni = 4; 
+const int botaoFim = 5;  
+
+int estadoBotaoIni = 0;
+int estadoBotaoFim = 0; 
+
 void setup() 
 {
   Serial.begin (9600);
   pinMode(Pino1Encoder, INPUT); 
   pinMode(Pino2Encoder, INPUT);
+  pinMode(botaoIni,INPUT); 
+  pinMode(botaoFim,INPUT);
   digitalWrite(Pino1Encoder, HIGH);
   digitalWrite(Pino2Encoder, HIGH);
   attachInterrupt(0, atualizaEncoder, CHANGE); 
@@ -31,6 +39,24 @@ void setup()
 
 void loop()
 { 
+
+  estadoBotaoIni = digitalRead(botaoIni);
+  estadoBotaoFim = digitalRead(botaoFim);             
+   
+  if (estadoBotaoIni == HIGH)
+  {
+    valormapeado == 0;
+  } else
+  {
+  }
+
+    if (estadoBotaoFim == HIGH)
+  {
+    valormapeado == 1000;
+  } else
+  {
+  }
+  
   valormapeado = map(ValorEncoder,0,100000,0,100);
   Serial.println(valormapeado);
   //Serial.println(ValorEncoder);
