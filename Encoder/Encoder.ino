@@ -6,22 +6,19 @@ github.com/violigon
 
 int Pino1Encoder = 2;
 int Pino2Encoder = 3;
+int valormapeado = 0;
+int ultimoMSB = 0;
+int ultimoLSB = 0;
+int estadoBotaoIni = 0;
+int estadoBotaoFim = 0;
+
+const int botaoIni = 4; 
+const int botaoFim = 5;  
 
 volatile int UltimoValorEncoder = 0;
 volatile long ValorEncoder = 0;
 
 long UltimoEncoder = 0;
-
-int valormapeado = 0;
-
-int ultimoMSB = 0;
-int ultimoLSB = 0;
-
-const int botaoIni = 4; 
-const int botaoFim = 5;  
-
-int estadoBotaoIni = 0;
-int estadoBotaoFim = 0; 
 
 void setup() 
 {
@@ -36,7 +33,6 @@ void setup()
   attachInterrupt(1, atualizaEncoder, CHANGE);
 }
 
-
 void loop()
 { 
 
@@ -48,6 +44,7 @@ void loop()
     valormapeado == 0;
   } else
   {
+    valormapeado == valormapeado;
   }
 
     if (estadoBotaoFim == HIGH)
@@ -55,6 +52,7 @@ void loop()
     valormapeado == 1000;
   } else
   {
+    valormapeado == valormapeado;
   }
   
   valormapeado = map(ValorEncoder,0,100000,0,100);
